@@ -1,11 +1,11 @@
-package com.company;
+package project1;
 
-import com.company.data.PostgresDB;
-import com.company.data.interfaces.IDB;
-import com.company.repositories.TrainRepository;
-import com.company.repositories.UserRepository;
-import com.company.repositories.interfaces.ITrainRepository;
-import com.company.repositories.interfaces.IUserRepository;
+import project1.data.PostgreDB;
+import project1.data.interfaces.IDBS;
+import project1.repositories.EmployeeRepository;
+import project1.repositories.PositionRepository;
+import project1.repositories.interfaces.IEmployeeRepository;
+import project1.repositories.interfaces.IPositionRepository;
 
 public class Main {
 
@@ -45,11 +45,12 @@ public class Main {
 //            }
 //        }
 
-        // Here you specify which DB and UserRepository to use
+        // Here you specify which DB and  to use
         // And changing DB should not affect to whole code
-        IDB db = new PostgresDB();
-        ITrainRepository repo = new TrainRepository(db);
-        TrainFrontend app = new TrainFrontend(repo);
+        IDBS db = new PostgreDB();
+        IPositionRepository repo = new PositionRepository(db);
+        MyPosition app = new MyPosition(repo);
         app.start();
+
     }
 }

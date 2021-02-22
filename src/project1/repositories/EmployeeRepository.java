@@ -1,32 +1,33 @@
-package com.company.repositories;
+package project1.repositories;
 
-import com.company.data.interfaces.IDB;
-import com.company.entities.User;
-import com.company.repositories.interfaces.IUserRepository;
+import project1.data.interfaces.IDBS;
+import project1.entities.Employee;
+import project1.repositories.interfaces.IEmployeeRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
 
-public class UserRepository implements IUserRepository {
-    private final IDB db;
+public class EmployeeRepository implements IEmployeeRepository {
+    private final IDBS db;
 
-    public UserRepository(IDB db) {
+    public EmployeeRepository(IDBS db) {
         this.db = db;
     }
 
     @Override
-    public boolean createUser(User user) {
+    public boolean createEmployee(Employee employee) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "INSERT INTO users(name,surname,gender) VALUES (?,?,?)";
+            String sql = "INSERT INTO employees(name,surname,gender,position) VALUES (?,?,?,?)";
             PreparedStatement st = con.prepareStatement(sql);
 
-            st.setString(1, user.getName());
-            st.setString(2, user.getSurname());
-            st.setBoolean(3, user.getGender());
+            st.setString(1, employee.getName());
+            st.setString(2, employee.getSurname());
+            st.setBoolean(3, employee.getGender());
+            st.setInt(4, employee.getPosition_id());
+
 
             boolean executed = st.execute();
             return executed;
@@ -45,23 +46,24 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public User getUser(int id) {
+    public Employee getEmployee(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname,gender FROM users WHERE id=?";
+            String sql = "SELECT id,name,surname,gender,position FROM employees WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, id);
 
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                User user = new User(rs.getInt("id"),
+                Employee employee = new Employee(rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("surname"),
-                        rs.getBoolean("gender"));
+                        rs.getBoolean("gender"),
+                        rs.getInt("position"));
 
-                return user;
+                return employee;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -78,25 +80,26 @@ public class UserRepository implements IUserRepository {
     }
 
     @Override
-    public List<User> getAllUsers() {
+    public List<Employee> getAllEmployees() {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname,gender FROM users";
+            String sql = "SELECT id,name,surname,gender,position FROM employees";
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
-            List<User> users = new ArrayList<>();
+            List<Employee> employees = new ArrayList<>();
             while (rs.next()) {
-                User user = new User(rs.getInt("id"),
+                Employee employee = new Employee(rs.getInt("id"),
                         rs.getString("name"),
                         rs.getString("surname"),
-                        rs.getBoolean("gender"));
+                        rs.getBoolean("gender"),
+                        rs.getInt("position"));
 
-                users.add(user);
+                employees.add(employee);
             }
 
-            return users;
+            return employees;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -110,4 +113,5 @@ public class UserRepository implements IUserRepository {
         }
         return null;
     }
+
 }
