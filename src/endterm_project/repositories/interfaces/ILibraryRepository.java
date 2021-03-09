@@ -10,5 +10,5 @@ public interface ILibraryRepository {
     boolean createLibrary(Library library);
     Library getLibrary(int id);
     List<Library> getAllLibraries();
-    List<Book> getAllBooksInUniversity();
+    List<Book> getAllLibraryBooks(int id);
 }

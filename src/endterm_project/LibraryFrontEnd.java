@@ -1,19 +1,19 @@
 package endterm_project;
 
 
-import endterm_project.controllers.BookController;
-import endterm_project.repositories.interfaces.IBookRepository;
+import endterm_project.controllers.LibraryController;
+import endterm_project.repositories.interfaces.ILibraryRepository;
 
 import java.util.Scanner;
 
 public class LibraryFrontEnd {
     /*calling controller*/
-    private final BookController controller;
+    private final LibraryController controller;
     private final Scanner scanner;
 
     /*creating new controller and scanner for new position*/
-    public LibraryFrontEnd(IBookRepository repos){
-        this.controller=new BookController(repos) ;
+    public LibraryFrontEnd(ILibraryRepository repos){
+        this.controller=new LibraryController(repos) ;
         this.scanner=new Scanner(System.in) ;
     }
 
@@ -23,11 +23,11 @@ public class LibraryFrontEnd {
             System.out.println();
             System.out.println("Welcome to My Application");
             System.out.println("Select option:");
-            System.out.println("1. Get all positions");
+            System.out.println("1. Get all Libraries");
             System.out.println("2. Get book by id");
-            System.out.println("3. Create position");
-            System.out.println("4. Get salary by position id");
-            System.out.println("5. Get count of salary by position id");
+            System.out.println("3. Create library");
+            System.out.println("4. Get salary by library id");
+            System.out.println("5. Get all books in library by id");
             System.out.println("0. Exit");
             System.out.println();
             try {
@@ -39,6 +39,10 @@ public class LibraryFrontEnd {
                     getBookByIdMenu();;
                 } else if (option == 3) {
                     createLibraryMenu();
+                } else if (option == 4) {
+                    createLibraryMenu();
+                } else if (option == 5) {
+                    ;
                 }else {
                     break;
                 }
@@ -53,6 +57,10 @@ public class LibraryFrontEnd {
 
     public void getAllLibrariesMenu(){
         String response = controller.getAllLibraries();
+        System.out.println(response);
+    }
+    public void getAllLibraryBooksMenu(int id){
+        String response = controller.getAllLibraryBooks(id);
         System.out.println(response);
     }
 

@@ -50,7 +50,6 @@ public class Library {
                 "id=" + id +
                 ", university='" + university + '\'' +
                 ", address='" + address + '\'' +
-                ", address='" + booksInLibrary + '\'' +
                 '}';
     }
 }

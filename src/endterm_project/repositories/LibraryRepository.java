@@ -109,12 +109,7 @@ public class LibraryRepository implements ILibraryRepository{
     }
 
     @Override
-    public List<Book> getAllBooksInUniversity() {
-        return null;
-    }
-
-    @Override
-    public List<Book> getAllBooksUniversity(int id){
+    public List<Book> getAllLibraryBooks(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
@@ -123,19 +118,18 @@ public class LibraryRepository implements ILibraryRepository{
                     "INNER JOIN library\n" +
                     "ON book.id=library.id where id=?";
             PreparedStatement st = con.prepareStatement(sql);
-
             st.setInt(1, id);
             ResultSet rs = st.executeQuery(sql);
-            List<Book> book = new ArrayList<>();
+            List<Book> books = new ArrayList<>();
             while (rs.next()) {
                 Book book = new Book(rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
                         rs.getInt("year"),
                         rs.getString("university"));
-
-                return book;
+                books.add(book);
             }
+            return books;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -151,5 +145,5 @@ public class LibraryRepository implements ILibraryRepository{
     }
 }
 
-}
+
 
