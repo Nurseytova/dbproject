@@ -1,24 +1,24 @@
-package project1.repositories;
+package endterm_project.repositories;
 
-import project1.data.interfaces.IDBS;
-import project1.entities.Position;
-import project1.repositories.interfaces.IPositionRepository;
+import endterm_project.data.interfaces.IDB;
+import endterm_project.entities.Book;
+import endterm_project.entities.Library;
+import endterm_project.repositories.interfaces.ILibraryRepository;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/*repository where */
-public class PositionRepository implements IPositionRepository {
-    private final IDBS db;
+public class LibraryRepository implements ILibraryRepository{
+    private final IDB db;
 
     //constructor
-    public PositionRepository(IDBS db){
+    public LibraryRepository(IDB db){
         this.db = db;
     }
 
     @Override
-    public boolean createPosition(Position position) {
+    public boolean createLibrary(Library library) {
         Connection con = null;
         try {
             con = db.getConnection();
@@ -26,8 +26,8 @@ public class PositionRepository implements IPositionRepository {
             //to insert data
             PreparedStatement st = con.prepareStatement(sql);
             //inserting each data
-            st.setString(1, position.getDescription());
-            st.setInt(2, position.getSalary());
+            st.setString(1, library.getUniversity());
+            st.setString(2, library.getAddress());
 
             boolean executed = st.execute();
             return executed;
@@ -47,22 +47,21 @@ public class PositionRepository implements IPositionRepository {
     }
 
     @Override
-    public Position getPosition(int id) {
+    public Library getLibrary(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,description,salary FROM position WHERE id=?";
+            String sql = "SELECT id,university,address FROM book WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
-
             st.setInt(1, id);
-
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Position position = new Position(rs.getInt("id"),
-                        rs.getString("description"),
-                        rs.getInt("salary"));
+                Library library = new Library(rs.getInt("id"),
+                        rs.getString("university"),
+                        rs.getString("address"));
 
-                return position;
+
+                return library;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -77,26 +76,24 @@ public class PositionRepository implements IPositionRepository {
         }
         return null;
     }
-
     @Override
-    public List<Position> getAllPositions() {
+    public List<Library> getAllLibraries() {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,description,salary FROM position";
+            String sql = "SELECT id,university,address FROM book";
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
-            List<Position> positions = new ArrayList<>();
+            List<Library> libraries = new ArrayList<>();
             while (rs.next()) {
-                Position position = new Position(rs.getInt("id"),
-                        rs.getString("description"),
-                        rs.getInt("salary"));
+                Library library = new Library(rs.getInt("id"),
+                        rs.getString("university"),
+                        rs.getString("address"));
 
-                positions.add(position);
+                libraries.add(library);
             }
-
-            return positions;
+            return libraries;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -112,20 +109,32 @@ public class PositionRepository implements IPositionRepository {
     }
 
     @Override
-    public int getSalaryById(int id) {
+    public List<Book> getAllBooksInUniversity() {
+        return null;
+    }
+
+    @Override
+    public List<Book> getAllBooksUniversity(int id){
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT salary FROM position WHERE id=?";
+            String sql = "SELECT book.id, book.title, book.author, book.year, library.university\n" +
+                    "FROM book\n" +
+                    "INNER JOIN library\n" +
+                    "ON book.id=library.id where id=?";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, id);
+            ResultSet rs = st.executeQuery(sql);
+            List<Book> book = new ArrayList<>();
+            while (rs.next()) {
+                Book book = new Book(rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getInt("year"),
+                        rs.getString("university"));
 
-            ResultSet rs = st.executeQuery();
-            if (rs.next()) {
-                int salary = rs.getInt("salary");
-
-                return salary;
+                return book;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -138,37 +147,9 @@ public class PositionRepository implements IPositionRepository {
                 throwables.printStackTrace();
             }
         }
-        return -1;
+        return null;
     }
-    @Override
-    public int getSumOfSalaryById(int id) {
-        Connection con = null;
-        try {
-            con = db.getConnection();
-            String sql = "SELECT id, description, salary  FROM position";
-            //   String sql2 = "SELECT*FROM Specialty WHERE id=? AND SUM(salary)";
-            PreparedStatement st = con.prepareStatement(sql);
-            ResultSet rs = st.executeQuery();
-            Integer sum = 0;
-            while (rs.next()) {
-                Position position = new Position(rs.getInt("id"),
-                        rs.getString("description"),
-                        rs.getInt("salary"));
-                sum += position.getSalary();
-            }
-            return sum;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            e.printStackTrace();
-        } finally {
-            try {
-                con.close();
-             } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            }
-        }
-        return 0;
-    }
+}
 
 }
+

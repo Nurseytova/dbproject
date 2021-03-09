@@ -1,38 +1,38 @@
-package project1.repositories;
+package endterm_project.repositories;
 
-import project1.data.interfaces.IDBS;
-import project1.entities.Employee;
-import project1.repositories.interfaces.IEmployeeRepository;
-
+import endterm_project.data.interfaces.IDB;
+import endterm_project.entities.Book;
+import endterm_project.repositories.interfaces.IBookRepository;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeRepository implements IEmployeeRepository {
-    private final IDBS db;
+public class BookRepository implements IBookRepository {
+    private final IDB db;
 
-    public EmployeeRepository(IDBS db) {
+    //constructor
+    public BookRepository(IDB db){
         this.db = db;
     }
 
     @Override
-    public boolean createEmployee(Employee employee) {
+    public boolean createBook(Book book) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "INSERT INTO employees(name,surname,gender,position) VALUES (?,?,?,?)";
+            String sql = "INSERT INTO book(title, author, year) VALUES (?,?,?)";
+            //to insert data
             PreparedStatement st = con.prepareStatement(sql);
-
-            st.setString(1, employee.getName());
-            st.setString(2, employee.getSurname());
-            st.setBoolean(3, employee.getGender());
-            st.setInt(4, employee.getPosition_id());
-
+            //inserting each data
+            st.setString(1, book.getTitle());
+            st.setString(2, book.getAuthor());
+            st.setInt(3, book.getYear());
 
             boolean executed = st.execute();
             return executed;
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
+
+        } catch (SQLException throwable) {
+            throwable.printStackTrace();
         } catch (ClassNotFoundException e) {
             e.printStackTrace();
         } finally {
@@ -46,24 +46,21 @@ public class EmployeeRepository implements IEmployeeRepository {
     }
 
     @Override
-    public Employee getEmployee(int id) {
+    public Book getBook(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname,gender,position FROM employees WHERE id=?";
+            String sql = "SELECT id,title,author,year FROM book WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
-
             st.setInt(1, id);
-
             ResultSet rs = st.executeQuery();
             if (rs.next()) {
-                Employee employee = new Employee(rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("surname"),
-                        rs.getBoolean("gender"),
-                        rs.getInt("position"));
+                Book book = new Book(rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getInt("year"));
 
-                return employee;
+                return book;
             }
         } catch (SQLException throwables) {
             throwables.printStackTrace();
@@ -78,28 +75,26 @@ public class EmployeeRepository implements IEmployeeRepository {
         }
         return null;
     }
-
     @Override
-    public List<Employee> getAllEmployees() {
+    public List<Book> getAllBooks() {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname,gender,position FROM employees";
+            String sql = "SELECT id,title,year FROM book";
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
-            List<Employee> employees = new ArrayList<>();
+            List<Book> books = new ArrayList<>();
             while (rs.next()) {
-                Employee employee = new Employee(rs.getInt("id"),
-                        rs.getString("name"),
-                        rs.getString("surname"),
-                        rs.getBoolean("gender"),
-                        rs.getInt("position"));
+                Book book = new Book(rs.getInt("id"),
+                        rs.getString("title"),
+                        rs.getString("author"),
+                        rs.getInt("year"));
 
-                employees.add(employee);
+                books.add(book);
             }
 
-            return employees;
+            return books;
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
