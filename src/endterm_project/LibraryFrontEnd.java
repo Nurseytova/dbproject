@@ -26,8 +26,7 @@ public class LibraryFrontEnd {
             System.out.println("1. Get all Libraries");
             System.out.println("2. Get book by id");
             System.out.println("3. Create library");
-            System.out.println("4. Get salary by library id");
-            System.out.println("5. Get all books in library by id");
+            System.out.println("4. Get all books in library by id");
             System.out.println("0. Exit");
             System.out.println();
             try {
@@ -40,10 +39,8 @@ public class LibraryFrontEnd {
                 } else if (option == 3) {
                     createLibraryMenu();
                 } else if (option == 4) {
-                    createLibraryMenu();
-                } else if (option == 5) {
-                    ;
-                }else {
+                    getAllLibraryBooksMenu();
+                } else {
                     break;
                 }
             } catch (Exception e) {
@@ -59,14 +56,16 @@ public class LibraryFrontEnd {
         String response = controller.getAllLibraries();
         System.out.println(response);
     }
-    public void getAllLibraryBooksMenu(int id){
+    public void getAllLibraryBooksMenu(){
+        System.out.println("Please enter id");
+        int id = scanner.nextInt();
         String response = controller.getAllLibraryBooks(id);
         System.out.println(response);
+
     }
 
     public void getBookByIdMenu() {
         System.out.println("Please enter id");
-
         int id = scanner.nextInt();
         String response = controller.getLibrary(id);
         System.out.println(response);

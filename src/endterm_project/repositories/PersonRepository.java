@@ -49,7 +49,7 @@ public class PersonRepository implements IPersonRepository {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname FROM position WHERE id=?";
+            String sql = "SELECT id,name,surname,library_id FROM person WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, id);
@@ -58,7 +58,8 @@ public class PersonRepository implements IPersonRepository {
             if (rs.next()) {
                 Person person = new Person(rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getString("surname"));
+                        rs.getString("surname"),
+                        rs.getInt("library_id"));
 
                 return person;
             }
@@ -80,7 +81,7 @@ public class PersonRepository implements IPersonRepository {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,name,surname FROM book";
+            String sql = "SELECT id,name,surname, library_id FROM person";
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
@@ -88,7 +89,8 @@ public class PersonRepository implements IPersonRepository {
             while (rs.next()) {
                 Person person = new Person(rs.getInt("id"),
                         rs.getString("name"),
-                        rs.getString("surname"));
+                        rs.getString("surname"),
+                        rs.getInt("library_id"));
 
                 people.add(person);
             }
@@ -127,7 +129,8 @@ public class PersonRepository implements IPersonRepository {
                 Book book = new Book(rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
-                        rs.getInt("year"));
+                        rs.getInt("year"),
+                        rs.getInt("library_id"));
 
                 books.add(book);
             }

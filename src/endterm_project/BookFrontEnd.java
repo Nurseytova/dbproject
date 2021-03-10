@@ -66,9 +66,11 @@ public class BookFrontEnd {
         System.out.println("Please enter book's author");
         String author = scanner.next();
         System.out.println("Please enter year ");
-        int year  = scanner.nextInt();  
+        int year  = scanner.nextInt();
+        System.out.println("Please enter library id ");
+        int library_id  = scanner.nextInt();
 
-        String response = controller.createBook(title, author,year);
+        String response = controller.createBook(title, author,year,library_id);
         System.out.println(response);
     }
 }

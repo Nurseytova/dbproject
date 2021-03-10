@@ -20,12 +20,12 @@ public class PersonFrontEnd {
     public void start() {
         while (true) {
             System.out.println();
-            System.out.println("Welcome to My Application");
+            System.out.println("Welcome to Library");
             System.out.println("Select option:");
             System.out.println("1. Get all people");
-            System.out.println("2. Get book by id");
+            System.out.println("2. Get person by id");
             System.out.println("3. Create person");
-            System.out.println("4. Get all books of person by person id");
+            System.out.println("4. Get all books of person by person's id");
             System.out.println("0. Exit");
             System.out.println();
             try {
@@ -37,6 +37,8 @@ public class PersonFrontEnd {
                     getPersonByIdMenu();
                 } else if (option == 3) {
                     createPersonMenu();
+                } else if (option == 4) {
+                    getAllPersonBooksMenu();
                 }else {
                     break;
                 }
@@ -56,9 +58,14 @@ public class PersonFrontEnd {
 
     public void getPersonByIdMenu() {
         System.out.println("Please enter id");
-
         int id = scanner.nextInt();
         String response = controller.getPerson(id);
+        System.out.println(response);
+    }
+    public void getAllPersonBooksMenu() {
+        System.out.println("Please enter id");
+        int id = scanner.nextInt();
+        String response = controller.getAllPersonBooks(id);
         System.out.println(response);
     }
 
@@ -67,8 +74,10 @@ public class PersonFrontEnd {
         String name = scanner.next();
         System.out.println("Please enter surname");
         String surname = scanner.next();
+        System.out.println("Now, enter library id");
+        int library_id = scanner.nextInt();
 
-        String response = controller.createPerson(name, surname);
+        String response = controller.createPerson(name, surname,library_id);
         System.out.println(response);
     }
 }

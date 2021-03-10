@@ -16,9 +16,9 @@ public class BookController {
 
     /*comment after actions*/
     /*for creating position*/
-    public String createBook(String title, String author, int year) {
+    public String createBook(String title, String author, int year, int library_id) {
 
-        Book book = new Book(title, author, year);
+        Book book = new Book(title, author, year,library_id);
 
         boolean created = repo.createBook(book);
 

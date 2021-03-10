@@ -5,18 +5,21 @@ public class Book {
     private String title;
     private String author;
     private int year;
+    private int library_id;
 
-    public Book(String title, String author, int year){
+    public Book(String title, String author, int year, int library_id){
         this.title = title;
         this.author = author;
         this.year = year;
+        this.library_id=library_id;
     }
 
-    public Book(int id, String title, String author, int year){
+    public Book(int id, String title, String author, int year,int library_id){
         this.id=id;
         this.title = title;
         this.author = author;
         this.year = year;
+        this.library_id=library_id;
     }
 
     public Book(int id, String title, String author, int year, String university) {
@@ -48,6 +51,14 @@ public class Book {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public int getLibrary_id() {
+        return library_id;
+    }
+
+    public void setLibrary_id(int library_id) {
+        this.library_id = library_id;
     }
 
     @Override
