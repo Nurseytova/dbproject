@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="26ae65f0-82ca-48c0-9df9-d8bf62adcf36" name="Default Changelist" comment="Third commit Ersultan">
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/BookFrontEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/BookFrontEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/LibraryFrontEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/LibraryFrontEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/PersonFrontEnd.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/PersonFrontEnd.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/controllers/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/controllers/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/controllers/LibraryController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/controllers/LibraryController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/controllers/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/controllers/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/entities/Book.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/entities/Book.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/entities/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/repositories/BookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/repositories/BookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/repositories/LibraryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/repositories/LibraryRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/repositories/PersonRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/repositories/PersonRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/repositories/interfaces/IBookRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/repositories/interfaces/IBookRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/endterm_project/repositories/interfaces/ILibraryRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/endterm_project/repositories/interfaces/ILibraryRepository.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+        <option value="Interface" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1pVpmGyb3tesuJ4yT1pJ9Nw7Vjn" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Java/postgresql-42.2.19 (1).jar" />
+    <property name="project.structure.last.edited" value="Libraries" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
+  </component>
+  <component name="RecentsManager">
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="endterm_project.entities" />
+      <recent name="endterm_project.repositories" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="endterm_project.Main" />
+      <module name="dbproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="endterm_project.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="project1.Main" />
+      <module name="dbproject" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="project1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main (1)" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26ae65f0-82ca-48c0-9df9-d8bf62adcf36" name="Default Changelist" comment="" />
+      <created>1615278272887</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1615278272887</updated>
+      <workItem from="1615278274914" duration="668000" />
+    </task>
+    <task id="LOCAL-00001" summary="First commit Ardak">
+      <created>1615327454054</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1615327454054</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Second commit Ardak">
+      <created>1615328512398</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1615328512398</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Third commit Ersultan">
+      <created>1615353673157</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1615353673157</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit Ardak" />
+    <MESSAGE value="Second commit Ardak" />
+    <MESSAGE value="Third commit Ersultan" />
+    <option name="LAST_COMMIT_MESSAGE" value="Third commit Ersultan" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <breakpoint enabled="true" type="java-exception">
+          <properties class="org.postgresql.util.PSQLException" package="org.postgresql.util" />
+          <option name="timeStamp" value="5" />
+        </breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
