@@ -24,18 +24,18 @@ public class LibraryFrontEnd {
             System.out.println("Welcome to My Application");
             System.out.println("Select option:");
             System.out.println("1. Get all Libraries");
-            System.out.println("2. Get book by id");
+            System.out.println("2. Get Library by id");
             System.out.println("3. Create library");
             System.out.println("4. Get all books in library by id");
             System.out.println("0. Exit");
             System.out.println();
             try {
-                System.out.print("Enter option (1-5): ");
+                System.out.print("Enter option (1-4): ");
                 int option = scanner.nextInt();
                 if (option == 1) {
                     getAllLibrariesMenu();;
                 } else if (option == 2) {
-                    getBookByIdMenu();;
+                    getLibraryByIdMenu();
                 } else if (option == 3) {
                     createLibraryMenu();
                 } else if (option == 4) {
@@ -51,7 +51,6 @@ public class LibraryFrontEnd {
         }
     }
     /*what to do in console with the methods*/
-
     public void getAllLibrariesMenu(){
         String response = controller.getAllLibraries();
         System.out.println(response);
@@ -59,12 +58,11 @@ public class LibraryFrontEnd {
     public void getAllLibraryBooksMenu(){
         System.out.println("Please enter id");
         int id = scanner.nextInt();
-        String response = controller.getAllLibraryBooks(id);
+        String response = controller.getLibraryBooks(id);
         System.out.println(response);
-
     }
 
-    public void getBookByIdMenu() {
+    public void getLibraryByIdMenu() {
         System.out.println("Please enter id");
         int id = scanner.nextInt();
         String response = controller.getLibrary(id);

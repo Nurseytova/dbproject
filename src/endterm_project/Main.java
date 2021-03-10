@@ -21,10 +21,9 @@ public class Main {
         IPersonRepository repo = new PersonRepository(db);
         PersonFrontEnd app2 = new PersonFrontEnd(repo);
         app2.start();
-
-
-//        ILibraryRepository repo1 = (ILibraryRepository) new LibraryRepository(db);
-//        BookFrontEnd app1 = new BookFrontEnd(repo);
-//        app1.start();
+       /* IDB db = new PostgreDB();
+        ILibraryRepository repo = new LibraryRepository(db);
+        LibraryFrontEnd app3 = new LibraryFrontEnd(repo);
+        app3.start();*/
     }
 }

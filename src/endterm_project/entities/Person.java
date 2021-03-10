@@ -1,10 +1,9 @@
 package endterm_project.entities;
 
-import java.util.LinkedList;
 import java.util.List;
 
 public class Person {
-    private static int id;
+    private  int id;
     private String name;
     private String surname;
     private int library_id;
@@ -13,12 +12,14 @@ public class Person {
     public Person(String name, String surname, int library_id) {
         this.name = name;
         this.surname = surname;
+        this.library_id=library_id;
     }
 
     public Person(int id, String name, String surname, int library_id) {
         this.id = id;
         this.name = name;
         this.surname = surname;
+        this.library_id=library_id;
     }
 
     public void setName(String name) {

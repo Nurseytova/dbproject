@@ -45,7 +45,7 @@ public class BookRepository implements IBookRepository {
                 throwables.printStackTrace();
             }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -115,21 +115,20 @@ public class BookRepository implements IBookRepository {
     }
 
     @Override
-    public List<Person> getBookUsers(int id) {
+    public int getBookUsers(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT book.id, book.title, person.id, person.name, person.surname\n" +
-                    "FROM book\n" +
-                    "INNER JOIN book_person\n" +
-                    "ON person.id=book_person.book_id\n" +
-                    "INNER JOIN person\n" +
+            String sql = "SELECT book.id, book.title, person.id, person.name, person.surname " +
+                    "FROM book " +
+                    "INNER JOIN book_person " +
+                    "ON person.id=book_person.book_id " +
+                    "INNER JOIN person " +
                     "ON book_person.person_id=person.id where person.id=?;";
             PreparedStatement st = con.prepareStatement(sql);
-
             st.setInt(1, id);
 
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery();
             List<Person> people = new ArrayList<>();
             while (rs.next()) {
                 Person person = new Person(rs.getInt("id"),
@@ -139,7 +138,7 @@ public class BookRepository implements IBookRepository {
 
                 people.add(person);
             }
-            return people;
+            return people.size();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -151,7 +150,7 @@ public class BookRepository implements IBookRepository {
                 throwables.printStackTrace();
             }
         }
-        return null;
+        return 0;
     }
 
 }

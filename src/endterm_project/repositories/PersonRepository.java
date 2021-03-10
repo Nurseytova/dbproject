@@ -22,12 +22,13 @@ public class PersonRepository implements IPersonRepository {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "INSERT INTO person(name, surname) VALUES (?,?)";
+            String sql = "INSERT INTO person(name, surname,library_id) VALUES (?,?,?)";
             //to insert data
             PreparedStatement st = con.prepareStatement(sql);
             //inserting each data
             st.setString(1, person.getName());
             st.setString(2, person.getSurname());
+            st.setInt(3, person.getLibrary_id());
 
             boolean executed = st.execute();
             return executed;
@@ -42,7 +43,7 @@ public class PersonRepository implements IPersonRepository {
                 throwables.printStackTrace();
             }
         }
-        return false;
+        return true;
     }
     @Override
     public Person getPerson(int id) {
@@ -113,18 +114,18 @@ public class PersonRepository implements IPersonRepository {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT book.id, book.title, book.author, book.year, person.id, person.name, person.surname\n" +
-                    "FROM person\n" +
-                    "INNER JOIN book_person\n" +
-                    "ON person.id=book_person.person_id\n" +
-                    "INNER JOIN book\n" +
+            String sql = "SELECT book.id, book.title, book.author, book.year, person.id, person.name, person.surname " +
+                    "FROM person " +
+                    "INNER JOIN book_person " +
+                    "ON person.id=book_person.person_id " +
+                    "INNER JOIN book " +
                     "ON book_person.book_id=book.id where person.id=?;";
             PreparedStatement st = con.prepareStatement(sql);
 
             st.setInt(1, id);
 
             ResultSet rs = st.executeQuery(sql);
-            List<Book> books = new ArrayList<>();
+            List<Book> books = new ArrayList<>(id);
             while (rs.next()) {
                 Book book = new Book(rs.getInt("id"),
                         rs.getString("title"),

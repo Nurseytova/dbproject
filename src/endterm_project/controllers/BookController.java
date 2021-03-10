@@ -6,33 +6,28 @@ import endterm_project.repositories.interfaces.IBookRepository;
 import java.util.List;
 
 public class BookController {
-    /*calling repository where we create position in db*/
     private final IBookRepository repo;
-
-    /*constructor with repository parameter*/
+/*connecting repository where all methods*/
     public BookController(IBookRepository repo) {
         this.repo = repo;
     }
-
-    /*comment after actions*/
-    /*for creating position*/
+/*creating new objects*/
     public String createBook(String title, String author, int year, int library_id) {
 
         Book book = new Book(title, author, year,library_id);
 
         boolean created = repo.createBook(book);
 
-        return (created ? "Library was created!" : "Library creation was failed!");
+        return (created ? "Book creation was failed!" : "You successfully created a new book!");
     }
-    /*getting Library by id*/
     public String getBook(int id) {
         Book book = repo.getBook(id);
 
         return (book == null ? "Library was not found!" : book.toString());
     }
-    /*outputting all Libraries*/
     public String getAllBooks() {
         List<Book> books = repo.getAllBooks();
         return books.toString();
     }
+
 }

@@ -9,5 +9,5 @@ public interface IBookRepository {
     boolean createBook(Book book);
     Book getBook(int id);
     List<Book> getAllBooks();
-    List<Person> getBookUsers(int id);
+    int getBookUsers(int id);
 }

@@ -5,6 +5,8 @@ import endterm_project.repositories.interfaces.IPersonRepository;
 
 import java.util.Scanner;
 
+import static java.lang.System.exit;
+
 public class PersonFrontEnd {
     /*calling controller*/
     private final PersonController controller;
@@ -28,27 +30,39 @@ public class PersonFrontEnd {
             System.out.println("4. Get all books of person by person's id");
             System.out.println("0. Exit");
             System.out.println();
-            try {
-                System.out.print("Enter option (1-5): ");
-                int option = scanner.nextInt();
-                if (option == 1) {
-                    getAllPeopleMenu();
-                } else if (option == 2) {
-                    getPersonByIdMenu();
-                } else if (option == 3) {
-                    createPersonMenu();
-                } else if (option == 4) {
-                    getAllPersonBooksMenu();
-                }else {
-                    break;
+            Integer choice = scanner.nextInt();
+//            try {
+               /* switch (choice){
+                    case 1 -> getAllPeopleMenu();
+                    case 2 -> getPersonByIdMenu();
+                    case 3 ->createPersonMenu();
+                    case 4-> getAllPersonBooksMenu();
+                    case 5 -> {
+                        break;
+                    }*/
+//                }
+
+                try {
+                    System.out.print("Enter option (1-4): ");
+                    int option = scanner.nextInt();
+                    if (option == 1) {
+                        getAllPersonBooksMenu();;
+                    } else if (option == 2) {
+                        getPersonByIdMenu();
+                    } else if (option == 3) {
+                        createPersonMenu();
+                    } else if (option == 4) {
+                        getAllPeopleMenu();
+                    } else {
+                        break;
+                    }
+                } catch (Exception e) {
+                    System.out.println(e.getMessage());
+                    scanner.next(); // to ignore incorrect input
                 }
-            } catch (Exception e) {
-                System.out.println(e.getMessage());
-                scanner.next(); // to ignore incorrect input
+                System.out.println("*************************");
             }
-            System.out.println("*************************");
         }
-    }
 
     /*what to do in console with the methods*/
     public void getAllPeopleMenu(){

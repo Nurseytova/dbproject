@@ -1,17 +1,27 @@
 package endterm_project.entities;
 
+import java.util.List;
+
 public class Book {
     private int id;
     private String title;
     private String author;
     private int year;
     private int library_id;
+    private static List<Person> BookUsers;
 
     public Book(String title, String author, int year, int library_id){
         this.title = title;
         this.author = author;
         this.year = year;
         this.library_id=library_id;
+    }
+    public Book(String title, String author, int year, int library_id, List<Person> BookUsers){
+        this.title = title;
+        this.author = author;
+        this.year = year;
+        this.library_id=library_id;
+        this.BookUsers=BookUsers;
     }
 
     public Book(int id, String title, String author, int year,int library_id){
@@ -20,9 +30,6 @@ public class Book {
         this.author = author;
         this.year = year;
         this.library_id=library_id;
-    }
-
-    public Book(int id, String title, String author, int year, String university) {
     }
 
     public int getId() {

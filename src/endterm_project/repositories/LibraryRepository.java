@@ -22,7 +22,7 @@ public class LibraryRepository implements ILibraryRepository{
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "INSERT INTO position(description, salary) VALUES (?,?)";
+            String sql = "INSERT INTO library(university, address) VALUES (?,?)";
             //to insert data
             PreparedStatement st = con.prepareStatement(sql);
             //inserting each data
@@ -43,7 +43,7 @@ public class LibraryRepository implements ILibraryRepository{
                 throwables.printStackTrace();
             }
         }
-        return false;
+        return true;
     }
 
     @Override
@@ -51,7 +51,7 @@ public class LibraryRepository implements ILibraryRepository{
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,university,address FROM book WHERE id=?";
+            String sql = "SELECT id,university,address FROM library WHERE id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
             ResultSet rs = st.executeQuery();
@@ -81,7 +81,7 @@ public class LibraryRepository implements ILibraryRepository{
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT id,university,address FROM book";
+            String sql = "SELECT id,university,address FROM library";
             Statement st = con.createStatement();
 
             ResultSet rs = st.executeQuery(sql);
@@ -109,27 +109,27 @@ public class LibraryRepository implements ILibraryRepository{
     }
 
     @Override
-    public List<Book> getAllLibraryBooks(int id) {
+    public int getLibraryBook(int id) {
         Connection con = null;
         try {
             con = db.getConnection();
-            String sql = "SELECT book.id, book.title, book.author, book.year, library.university\n" +
-                    "FROM book\n" +
-                    "INNER JOIN library\n" +
-                    "ON book.id=library.id where id=?";
+            String sql = "SELECT book.id, book.title, book.author, book.year, library.university " +
+                    "FROM book " +
+                    "INNER JOIN library " +
+                    "ON book.library_id=library.id where book.id=?";
             PreparedStatement st = con.prepareStatement(sql);
             st.setInt(1, id);
-            ResultSet rs = st.executeQuery(sql);
+            ResultSet rs = st.executeQuery();
             List<Book> books = new ArrayList<>();
             while (rs.next()) {
                 Book book = new Book(rs.getInt("id"),
                         rs.getString("title"),
                         rs.getString("author"),
                         rs.getInt("year"),
-                        rs.getString("university"));
+                        rs.getShort("library_id"));
                 books.add(book);
             }
-            return books;
+            return books.size();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
         } catch (ClassNotFoundException e) {
@@ -141,7 +141,7 @@ public class LibraryRepository implements ILibraryRepository{
                 throwables.printStackTrace();
             }
         }
-        return null;
+        return 0;
     }
 }
 
