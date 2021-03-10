@@ -1,0 +1,6 @@
+# dbproject
+Code start running from main Class Main. Where we are import all Classes from other Packages. By Creating new Data Base, we connect them with PersonRepository, BookRepository or LibraryRepository. But in order not to mix them up, we comment on two of the three repositories. This way the program does not get confused in commands. If we need a BookRepository, we comment on other Repositories. By connecting repo with Data Base, we creating them individual app/app1/app2 which connected with repo. After program starts. 
+Other Classes like BookFrontEnd, LibraryFrontEnd, and PersonFrontEnd. We call Methods through the Controller and in the Controller we create new Objects and transfer them to the method that is in the Repository. And here they have similar actions, only differ from each other in their requests.
+In Package Controllers, Classes calling repository where we create position in Data Base, where we are creating positions. Where we get Library by id and after that Class outputting all Libraries. Classes in Package Controllers are same, with little difference. 
+In Package Data, we created Interface IDB, where we create interface method for getting a connect with presql with exceptions. Also, in PostgreDB we call Data Base by writing password and name of Data Base.
+
