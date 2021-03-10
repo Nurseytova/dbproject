@@ -8,6 +8,15 @@ import java.util.Scanner;
 import static java.lang.System.exit;
 
 public class PersonFrontEnd {
+    public static final String RESET = "\u001B[0m";
+    public static final String BLACK = "\u001B[30m";
+    public static final String RED = "\u001B[31m";
+    public static final String GREEN = "\u001B[32m";
+    public static final String YELLOW = "\u001B[33m";
+    public static final String BLUE = "\u001B[34m";
+    public static final String PURPLE = "\u001B[35m";
+    public static final String CYAN = "\u001B[36m";
+    public static final String WHITE = "\u001B[37m";
     /*calling controller*/
     private final PersonController controller;
     private final Scanner scanner;
@@ -22,13 +31,13 @@ public class PersonFrontEnd {
     public void start() {
         while (true) {
             System.out.println();
-            System.out.println("Welcome to Library");
-            System.out.println("Select option:");
-            System.out.println("1. Get all people");
-            System.out.println("2. Get person by id");
-            System.out.println("3. Create person");
-            System.out.println("4. Get all books of person by person's id");
-            System.out.println("0. Exit");
+            System.out.println(PURPLE + "Welcome to Library" + RESET);
+            System.out.println(BLUE + "Select option:" + RESET);
+            System.out.println(YELLOW + "1. Get all people" + RESET);
+            System.out.println(YELLOW + "2. Get person by id" + RESET);
+            System.out.println(YELLOW + "3. Create person" + RESET);
+            System.out.println(YELLOW + "4. Get all books of person by person's id" + RESET);
+            System.out.println(YELLOW + "0. Exit" + RESET);
             System.out.println();
             Integer choice = scanner.nextInt();
 //            try {
@@ -43,7 +52,7 @@ public class PersonFrontEnd {
 //                }
 
                 try {
-                    System.out.print("Enter option (1-4): ");
+                    System.out.print(BLUE + "Enter option (1-4): " + RESET);
                     int option = scanner.nextInt();
                     if (option == 1) {
                         getAllPersonBooksMenu();;
@@ -71,24 +80,24 @@ public class PersonFrontEnd {
     }
 
     public void getPersonByIdMenu() {
-        System.out.println("Please enter id");
+        System.out.println(YELLOW + "Please enter id" + RESET);
         int id = scanner.nextInt();
         String response = controller.getPerson(id);
         System.out.println(response);
     }
     public void getAllPersonBooksMenu() {
-        System.out.println("Please enter id");
+        System.out.println(YELLOW + "Please enter id" + RESET);
         int id = scanner.nextInt();
         String response = controller.getAllPersonBooks(id);
         System.out.println(response);
     }
 
     public void createPersonMenu() {
-        System.out.println("Please enter name");
+        System.out.println(YELLOW + "Please enter name" + RESET);
         String name = scanner.next();
-        System.out.println("Please enter surname");
+        System.out.println(YELLOW + "Please enter surname" + RESET);
         String surname = scanner.next();
-        System.out.println("Now, enter library id");
+        System.out.println(YELLOW + "Now, enter library id" + RESET);
         int library_id = scanner.nextInt();
 
         String response = controller.createPerson(name, surname,library_id);
