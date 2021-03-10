@@ -37,7 +37,7 @@ public class BookFrontEnd {
             System.out.println(YELLOW + "0. Exit" + RESET);
             System.out.println();
             try {
-                System.out.print(BLUE + "Enter option (1-5): " + RESET);
+                System.out.print(BLUE + "Enter option (1-3): " + RESET);
                 int option = scanner.nextInt();
                 if (option == 1) {
                     getAllBooksMenu();
